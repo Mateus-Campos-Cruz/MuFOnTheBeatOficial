@@ -8,19 +8,34 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #3E3E37;
-  background-color: #33332C;
+  background-color: #1a1a18;
 }
 
-.main-container
-{
-    margin: 0;
-    padding: 0;
+.main-container {
+    position: relative; /* base para o ::before */
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto
+    grid-template-rows: auto;
+    z-index: 0; /* conteúdo acima do fundo */
 }
 
+/* camada de fundo com imagem e fade */
+.main-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-image: 
+        linear-gradient(to bottom, #00000099, #1a1a18), 
+        url('img/header-bg.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: -1; /* atrás do conteúdo */
+    pointer-events: none;
+}
 
 header
 {
@@ -110,15 +125,15 @@ a:hover{
     
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 50px;
     margin: 80px 100px 100px 100px;
 }
 
 .session1
 {
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto;
     text-align: center;
     color: #E8E3D1;
 }
@@ -129,11 +144,22 @@ a:hover{
 }
 
 .title2{
-    margin-top: 5x;
+    margin-top: 20x;
+}
+
+.portfolio
+{
+    text-align: center;
+    color: #E8E3D1;
+    font-size: 26px;
+    
 }
 
 .catalogo
 {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 50px;
     margin-top: 50px;
 }
 
@@ -148,4 +174,240 @@ a:hover{
 iframe
 {
     border-radius: 20px;
+}
+
+.session3
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    gap: 20px;
+    color: #E8E3D1;
+    font-weight: bold;
+    font-size: 26px;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto img
+{
+    width: 300px;
+    border-radius: 25px;
+}
+
+.canal-youtube {
+    background-color: #FF0000;
+    color: #E8E3D1;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.canal-youtube:hover {
+    background-color: #E8E3D1;
+    color: #FF0000;
+}
+
+.canal-youtube i {
+    margin-right: 10px;
+}
+
+/*footer*/
+
+.footer
+{
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 50px;
+
+}
+
+.links-redes
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#youtube-icon 
+{
+    font-size: 50px;
+    color: #FF0000;
+}
+
+#youtube-icon:hover 
+{
+    color: #E8E3D1;
+}
+
+#insta-icon 
+{
+    font-size: 50px;
+    color: #E1306C;
+}
+
+#insta-icon:hover 
+{
+    color: #E8E3D1;
+}
+
+#whats-icon 
+{
+    font-size: 50px;
+    color: #25D366;
+}
+
+#whats-icon:hover 
+{
+    color: #E8E3D1;
+}
+
+.cidade 
+{
+    text-align: center;
+    color: #E8E3D1;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+/* Media Query para Galaxy S8+ (largura aproximada 412px) e dispositivos similares */
+@media only screen and (max-width: 412px) {
+  /* Ajusta padding e margens para caber melhor na tela */
+  .container {
+    display: flex;
+    flex-direction: column; /* empilha verticalmente */
+    gap: 100px; /* controla a distância entre os títulos */
+    margin: 40px 20px 60px 20px;
+    
+  }
+
+  /* Header: coluna única para caber melhor no celular */
+  header {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .logo-title {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .logo, .logo img {
+    width: 70px;
+    height: 70px;
+    padding: 2px;
+  }
+
+  .title p {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  /* Ajusta títulos para ficarem mais próximos */
+.title1 {
+    margin-bottom: 2px; /* reduz mais o espaço */
+  }
+  .title2 {
+    margin-top: 2px; /* dá um pequeno espaçamento */
+  }
+
+  /* Reduz o espaço entre session1 e session2 */
+  .session1 {
+    display: flex;
+    flex-direction: column; /* empilha verticalmente */
+    gap: 100px; /* controla a distância entre os títulos */
+  }
+    
+s
+  /* Links em uma coluna */
+  .links {
+    grid-template-columns: 1fr;
+    padding: 10px 0;
+  }
+
+  a {
+    font-size: 18px;
+  }
+
+  /* Ajusta sessões para coluna única */
+  .session3 {
+    grid-template-columns: 1fr;
+    font-size: 20px;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  /* Centraliza totalmente a imagem */
+  .foto {
+    display: flex;
+    justify-content: center;
+  }
+  .foto img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 20px;
+  }
+
+  /* Centraliza e justifica o texto bio */
+  .bio {
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  /* Esconde o menu .pages */
+  .pages {
+    display: none;
+  }
+
+  /* Catálogo flex-wrap com espaçamento reduzido */
+  .catalogo-beats {
+    gap: 15px;
+    justify-content: center;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  /* Botão canal youtube menor */
+  .canal-youtube {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* Ajusta footer */
+  .footer {
+    gap: 30px;
+  }
+
+  .links-redes {
+    gap: 15px;
+  }
+
+  #youtube-icon, #insta-icon, #whats-icon {
+    font-size: 40px;
+  }
+
+  .cidade {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* Ajusta altura da camada de fundo */
+  .main-container::before {
+    height: 30%;
+  }
 }
